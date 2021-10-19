@@ -1,6 +1,6 @@
 {
   "name": "nluka-number-range",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Class for representing number ranges.",
   "main": "lib/NumberRange.js",
   "scripts": {

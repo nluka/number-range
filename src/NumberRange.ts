@@ -7,7 +7,7 @@ export default class NumberRange {
    * Creates a new NumberRange.
    * @param min The minimum.
    * @param max The maximum.
-   * @param isMutable Deterimes if object can be mutated after being created. Defaults to false.
+   * @param isMutable Determines if object can be mutated after being created. Defaults to false.
    */
   constructor(min: number, max: number, isMutable = false) {
     if (min > max) {
