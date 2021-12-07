@@ -1,7 +1,7 @@
 {
   "name": "nluka-number-range",
-  "version": "1.0.1",
-  "description": "Class for representing number ranges.",
+  "version": "1.0.2",
+  "description": "Simple and lightweight class for representing number ranges.",
   "main": "lib/NumberRange.js",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
@@ -16,7 +16,10 @@
   },
   "keywords": [
     "number",
-    "range"
+    "range",
+    "javascript",
+    "typescript",
+    "lightweight"
   ],
   "author": "Nicholas Lukasevich",
   "license": "MIT",

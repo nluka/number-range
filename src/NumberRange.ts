@@ -11,7 +11,9 @@ export default class NumberRange {
    */
   constructor(min: number, max: number, isMutable = false) {
     if (min > max) {
-      throw new Error(`'min' (${min}) cannot be greater than 'max' (${max})`);
+      throw new Error(
+        `cannot construct: min (${min}) must be greater than max (${max})`,
+      );
     }
 
     this._min = min;
@@ -38,26 +40,24 @@ export default class NumberRange {
   }
 
   /**
-   * @returns True if object is mutable, false if it is not.
+   * @returns True if object is mutable, false otherwise.
    */
   public isMutable() {
     return this._isMutable;
   }
 
   /**
-   * Updates minimum. Throws an error is object is immutable.
+   * Updates minimum. Throws error if object is immutable.
    * @param value The new min.
-   * @returns `this` if successful.
+   * @returns this.
    */
   public setMin(value: number) {
     if (!this._isMutable) {
-      throw new Error(
-        `cannot set 'min' to ${value} because object is immutable`,
-      );
+      throw new Error(`cannot set min to ${value}: object is immutable`);
     }
     if (value > this._max) {
       throw new Error(
-        `min cannot be set to ${value} because it must be <= the current max (${this._max})`,
+        `cannot set min to ${value}: value must be <= the current max (${this._max})`,
       );
     }
 
@@ -66,19 +66,17 @@ export default class NumberRange {
   }
 
   /**
-   * Updates maximum. Throws an error is object is immutable.
+   * Updates maximum. Throws error if object is immutable.
    * @param value The new max.
-   * @returns `this` if successful.
+   * @returns this.
    */
   public setMax(value: number) {
     if (!this._isMutable) {
-      throw new Error(
-        `cannot set 'max' to ${value} because object is immutable`,
-      );
+      throw new Error(`cannot set max to ${value}: object is immutable`);
     }
     if (value < this._min) {
       throw new Error(
-        `max cannot be set to ${value} because it must be >= the current min (${this._min})`,
+        `cannot set max to ${value}: value must be >= the current min (${this._min})`,
       );
     }
 
@@ -89,7 +87,7 @@ export default class NumberRange {
   /**
    * Checks if `int` exists inclusively within the range. For floating-point numbers, use `containsFloat` instead.
    * @param int The number to check.
-   * @returns true if `int` exists inclusively between `min` and `max`, false otherwise.
+   * @returns True if `int` exists inclusively between `min` and `max`, false otherwise.
    */
   public containsInt(int: number) {
     return int >= this._min && int <= this._max;
@@ -99,12 +97,10 @@ export default class NumberRange {
    * Checks if `float` exists inclusively within the range.
    * @param float The number to check.
    * @param decimalPlaces The number of decimal places to round `float` to. Defaults to 15.
-   * @returns true if `float` exists inclusively between `min` and `max` with the given precision, false otherwise.
+   * @returns True if `float` exists inclusively between `min` and `max` with the given precision, false otherwise.
    */
   public containsFloat(float: number, decimalPlaces = 15) {
-    return (
-      parseFloat(float.toPrecision(decimalPlaces)) >= this._min &&
-      parseFloat(float.toPrecision(decimalPlaces)) <= this._max
-    );
+    const roundedFloat = parseFloat(float.toPrecision(decimalPlaces));
+    return roundedFloat >= this._min && roundedFloat <= this._max;
   }
 }
