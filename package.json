@@ -1,6 +1,6 @@
 {
   "name": "nluka-number-range",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple and lightweight class for representing number ranges.",
   "main": "lib/NumberRange.js",
   "scripts": {
@@ -33,12 +33,10 @@
     "eslint-config-prettier": "^8.3.0",
     "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "ts-jest": "^27.1.2",
     "typescript": "^4.4.4"
   },
   "files": [
     "lib/**/*"
-  ],
-  "dependencies": {
-    "ts-jest": "^27.0.7"
-  }
+  ]
 }
